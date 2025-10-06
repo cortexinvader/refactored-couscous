@@ -53,4 +53,4 @@ async function stylebg(sock, chatId, message, args) {
     }
 }
 
-module.exports = stylebgCommand;
+module.exports = stylebg;
