@@ -595,7 +595,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith('.compliment'):
                 await complimentCommand(sock, chatId, message);
                 break;
-            case userMessage.startsWith('.rmbg'):
+            case userMessage.startsWith('.rbg'):
                 await rmbg(sock, chatId, message);
                 break;
             case userMessage.startsWith('.insult'):
