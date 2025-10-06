@@ -596,7 +596,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await complimentCommand(sock, chatId, message);
                 break;
             case userMessage.startsWith('.rbg'):
-                await stylebg(sock, chatId, message, text);
+                await stylebg(sock, chatId, message, userMessage);
                 break;
             case userMessage.startsWith('.insult'):
                 await insultCommand(sock, chatId, message);
