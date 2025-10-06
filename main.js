@@ -14,7 +14,7 @@ const { autotypingCommand, isAutotypingEnabled, handleAutotypingForMessage, hand
 const { autoreadCommand, isAutoreadEnabled, handleAutoread } = require('./commands/autoread');
 
 // Command imports
-const rmbg = require('./commands/rmbg');
+const stylebg = require('./commands/rmbg');
 const tagAllCommand = require('./commands/tagall');
 const helpCommand = require('./commands/help');
 const banCommand = require('./commands/ban');
@@ -596,7 +596,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await complimentCommand(sock, chatId, message);
                 break;
             case userMessage.startsWith('.rbg'):
-                await rmbg(sock, chatId, message);
+                await stylebg(sock, chatId, message, text);
                 break;
             case userMessage.startsWith('.insult'):
                 await insultCommand(sock, chatId, message);
