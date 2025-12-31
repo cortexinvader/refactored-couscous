@@ -1,3 +1,4 @@
+
 /**
  * Knight Bot - A WhatsApp Bot
  * Copyright (c) 2024 Professor
@@ -395,3 +396,33 @@ fs.watchFile(file, () => {
     delete require.cache[file]
     require(file)
 })
+
+/**
+ * Minimal HTTP listener so hosts like Render detect a listening port.
+ * Render sets process.env.PORT automatically; bind to that.
+ * The HTTP server is intentionally tiny and non-blocking.
+ */
+const http = require('http')
+const PORT = process.env.PORT || 3000
+const HOST = '0.0.0.0'
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/health' || req.url === '/_health') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' })
+        res.end('OK')
+        return
+    }
+    // Basic info endpoint (keeps the container "open" for Render)
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.end('Knight Bot is running')
+})
+
+server.on('listening', () => {
+    console.log(`HTTP server listening on ${HOST}:${PORT}`)
+})
+
+server.on('error', (err) => {
+    console.error('HTTP server error:', err)
+})
+
+server.listen(PORT, HOST)
